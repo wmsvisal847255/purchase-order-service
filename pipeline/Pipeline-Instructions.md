@@ -18,20 +18,20 @@ Replace the placeholders with values corresponding to your GitHub Repo and Token
 
 ```bash
 aws ssm put-parameter \
-    --name "/service/aws-sam-pipeline/github/repo" \
-    --description "Github Repository name for Cloudformation Stack aws-sam-pipeline" \
+    --name "/service/aws-sam-pipeline-order/github/repo" \
+    --description "Github Repository name for Cloudformation Stack aws-sam-pipeline-order" \
     --type "String" \
     --value ""
 
 aws ssm put-parameter \
-    --name "/service/aws-sam-pipeline/github/token" \
-    --description "Github Token for Cloudformation Stack aws-sam-pipeline" \
+    --name "/service/aws-sam-pipeline-order/github/token" \
+    --description "Github Token for Cloudformation Stack aws-sam-pipeline-order" \
     --type "String" \
     --value ""
 
 aws ssm put-parameter \
-    --name "/service/aws-sam-pipeline/github/user" \
-    --description "Github Username for Cloudformation Stack aws-sam-pipeline" \
+    --name "/service/aws-sam-pipeline-order/github/user" \
+    --description "Github Username for Cloudformation Stack aws-sam-pipeline-order" \
     --type "String" \
     --value ""
 
@@ -91,7 +91,7 @@ Run the following AWS CLI command to create your first pipeline for your SAM bas
 
 ```bash
 aws cloudformation create-stack \
-    --stack-name aws-sam-pipeline \
+    --stack-name aws-sam-pipeline-order \
     --template-body file://pipeline.yaml \
     --capabilities CAPABILITY_NAMED_IAM
 ```
