@@ -43,18 +43,18 @@ Resources:
       StageName: !Ref Environment
       TracingEnabled: true
       Cors: "'*'"
-      Auth:
-        Authorizers:
-          GeneralAuth:
-            AuthorizationScopes:
-              - email
-            IdentitySource: "$request.header.Authorization"
-            JwtConfiguration:
-              issuer: !Sub
-              - https://cognito-idp.${AWS::Region}.amazonaws.com/
-              - { Domain: !FindInMap ["ResourcesName", !Ref Environment, userpoolId] }
-              audience:
-                - !FindInMap [ResourcesName, !Ref Environment, clientId]
+      # Auth:
+      #   Authorizers:
+      #     GeneralAuth:
+      #       AuthorizationScopes:
+      #         - email
+      #       IdentitySource: "$request.header.Authorization"
+      #       JwtConfiguration:
+      #         issuer: !Sub
+      #         - https://cognito-idp.${AWS::Region}.amazonaws.com/
+      #         - { Domain: !FindInMap ["ResourcesName", !Ref Environment, userpoolId] }
+      #         audience:
+      #           - !FindInMap [ResourcesName, !Ref Environment, clientId]
 
   PurchaseOrder:
     Type: AWS::Serverless::Function
