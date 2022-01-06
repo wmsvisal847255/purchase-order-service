@@ -20,19 +20,19 @@ Mappings:
     dev:
       tableName: PurchaseOrderDev
       tableNameArn: PurchaseOrderDevArn
-      arn: congito-users-UserPool-dev
+      arn: UserPoolArnDev
       userpoolId: us-east-1_AbK7rzs9g
       clientId: 4b8g7rrkms31sdr4ba6dau3133
     staging:
       tableName: PurchaseOrderStaging
       tableNameArn: PurchaseOrderStagingArn
-      arn: congito-users-UserPool-staging
+      arn: UserPoolArnStaging
       userpoolId: us-east-1_JEZJrG9rt
       clientId: 3aasdadsanrvve12tci8d7im75
     prod:
       tableName: PurchaseOrderProd
       tableNameArn: PurchaseOrderProdArn
-      arn: congito-users-UserPool-prod
+      arn: UserPoolArnProd
       userpoolId: t
       clientId: t
 
@@ -43,6 +43,12 @@ Resources:
       StageName: !Ref Environment
       TracingEnabled: true
       Cors: "'*'"
+      Auth:
+        DefaultAuthorizer: MyCognitoAuthorizer
+        Authorizers:
+          MyCognitoAuthorizer:
+            UserPoolArn: 
+              Fn::ImportValue: !FindInMap [ResourcesName, !Ref Environment, arn]
       # Auth:
       #   Authorizers:
       #     GeneralAuth:
