@@ -33,7 +33,7 @@ exports.productPurchaseHandler = async (event, context) => {
 function saveOrder(event, context) {
 	const order = JSON.parse(event.body);
 	order.orderId = context.awsRequestId;
-	order.customerId = event.requestContext.authorizer.claims.sub;
+	order.customerId = context.awsRequestId;
 	order.paymentStatus = "Pending";
 
 	return databaseManager.saveOrder(order).then(response => {
