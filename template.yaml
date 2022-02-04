@@ -43,12 +43,12 @@ Resources:
       StageName: !Ref Environment
       TracingEnabled: true
       Cors: "'*'"
-      Auth:
-        DefaultAuthorizer: MyCognitoAuthorizer
-        Authorizers:
-          MyCognitoAuthorizer:
-            UserPoolArn: 
-              Fn::ImportValue: !FindInMap [ResourcesName, !Ref Environment, arn]
+      # Auth:
+      #   DefaultAuthorizer: MyCognitoAuthorizer
+      #   Authorizers:
+      #     MyCognitoAuthorizer:
+      #       UserPoolArn: 
+      #         Fn::ImportValue: !FindInMap [ResourcesName, !Ref Environment, arn]
       # Auth:
       #   Authorizers:
       #     GeneralAuth:
